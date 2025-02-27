@@ -1,67 +1,108 @@
-body {
-    font-family: Arial, sans-serif;
+/* 全体のリセット */
+* {
     margin: 0;
     padding: 0;
-    background-color: #fff;
-    color: #000;
+    box-sizing: border-box;
 }
 
-header {
+body {
+    font-family: "Arial", sans-serif;
+    color: #333;
     background-color: #fff;
-    padding: 15px 0;
     text-align: center;
 }
 
+/* ヘッダー */
+header {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    background: rgba(255, 255, 255, 0.9);
+    padding: 15px 0;
+    text-align: center;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+}
+
 nav ul {
-    list-style-type: none;
-    padding: 0;
-    margin: 0;
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    gap: 20px;
 }
 
 nav ul li {
     display: inline;
-    margin: 0 20px;
 }
 
 nav ul li a {
     text-decoration: none;
-    color: #000;
+    color: #333;
     font-weight: bold;
+    padding: 5px 10px;
 }
 
+/* メインセクション（Hero セクション） */
 .hero {
-    background: url('hero-image.jpg') no-repeat center center/cover;
-    height: 400px;
+    height: 100vh;
+    background: url('images/hero-image.jpg') no-repeat center center/cover;
     display: flex;
     align-items: center;
     justify-content: center;
+    flex-direction: column;
 }
 
-.hero-content h1 {
+.hero h1 {
     font-size: 60px;
-    color: #fff;
-    text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+    color: white;
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
 }
 
-.links {
-    text-align: center;
-    padding: 50px 20px;
+/* ボタンエリア */
+.link-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 15px;
+    margin-top: 20px;
 }
 
-.link-buttons .btn {
+.btn {
     display: inline-block;
+    background-color: #e60012;
+    color: white;
     padding: 10px 20px;
-    margin: 5px;
-    background-color: #ff0000;
-    color: #fff;
     text-decoration: none;
     border-radius: 20px;
+    font-size: 16px;
+    transition: background 0.3s ease;
 }
 
+.btn:hover {
+    background-color: #c40010;
+}
+
+/* フッター */
 footer {
-    background-color: #ff0000;
+    background: #e60012;
     color: white;
-    text-align: center;
-    padding: 20px 0;
-    margin-top: 50px;
+    padding: 15px 0;
+    margin-top: 30px;
+}
+
+/* レスポンシブ対応 */
+@media (max-width: 768px) {
+    .hero h1 {
+        font-size: 40px;
+    }
+
+    .link-buttons {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .btn {
+        width: 80%;
+        text-align: center;
+        margin: 5px 0;
+    }
 }
