@@ -8,6 +8,17 @@
     input[type="number"], input[type="text"] { width: 100px; margin-right: 10px; }
     button { padding: 5px 10px; }
     .result { margin-top: 20px; font-weight: bold; white-space: pre-wrap; }
+    .color-preview {
+      width: 100px;
+      height: 50px;
+      margin-top: 10px;
+      border: 1px solid #ccc;
+      background-color: #fff;
+    }
+    .footer {
+      margin-top: 40px;
+      font-size: 0.9em;
+    }
   </style>
 </head>
 <body>
@@ -33,8 +44,17 @@
   </div>
 
   <div class="result" id="result"></div>
+  <div class="color-preview" id="preview"></div>
+
+  <div class="footer">
+    🔗 <a href="https://shiekoa.github.io/loveclay/" target="_blank">作者はこちら</a>
+  </div>
 
   <script>
+    function setPreviewColor(r, g, b) {
+      document.getElementById("preview").style.backgroundColor = `rgb(${r}, ${g}, ${b})`;
+    }
+
     function convertRGB() {
       const r = parseFloat(document.getElementById("r").value);
       const g = parseFloat(document.getElementById("g").value);
@@ -51,6 +71,8 @@
 
       document.getElementById("result").textContent =
         `RGB(${r}, ${g}, ${b}) → 小数表記: (${rF}, ${gF}, ${bF})`;
+
+      setPreviewColor(r, g, b);
     }
 
     function convertHEX() {
@@ -74,6 +96,8 @@
 
       document.getElementById("result").textContent =
         `HEX #${value.toUpperCase()} = RGB(${r}, ${g}, ${b}) → 小数表記: (${rF}, ${gF}, ${bF})`;
+
+      setPreviewColor(r, g, b);
     }
   </script>
 </body>
