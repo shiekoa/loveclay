@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <title>RGB / HEX → 小数変換ツール</title>
+  <style>
+    body { font-family: sans-serif; padding: 20px; background-color: #f9f9f9; }
+    input[type="number"], input[type="text"] { width: 100px; margin-right: 10px; }
+    button { padding: 5px 10px; }
+    .result { margin-top: 20px; font-weight: bold; white-space: pre-wrap; }
+    .color-preview {
+      width: 100px;
+      height: 50px;
+      margin-top: 10px;
+      border: 1px solid #ccc;
+      background-color: #fff;
+    }
+    .footer {
+      margin-top: 40px;
+      font-size: 0.9em;
+    }
+  </style>
+</head>
+<body>
+  <h1>RGB / HEX → 0〜1 小数変換ツール</h1>
+  <p>RGB(0〜255) または HEX(#FFFFFFなど) を入力して、小数に変換します。</p>
+
+  <h2>RGBで入力</h2>
+  <div>
+    <label>R:</label>
+    <input type="number" id="r" min="0" max="255">
+    <label>G:</label>
+    <input type="number" id="g" min="0" max="255">
+    <label>B:</label>
+    <input type="number" id="b" min="0" max="255">
+    <button onclick="convertRGB()">RGB変換</button>
+  </div>
+
+  <h2>HEXで入力</h2>
+  <div>
+    <label>HEX:</label>
+    <input type="text" id="hex" placeholder="#RRGGBB">
+    <button onclick="convertHEX()">HEX変換</button>
+  </div>
+
+  <div class="result" id="result"></div>
+  <div class="color-preview" id="preview"></div>
+
+  <div class="footer">
+    🔗 <a href="https://shiekoa.github.io/loveclay/" target="_blank">作者はこちら</a>
+  </div>
+
+  <script>
+    function setPreviewColor(r, g, b) {
+      document.getElementById("preview").style.backgroundColor = `rgb(${r}, ${g}, ${b})`;
+    }
+
+    function convertRGB() {
+      const r = parseFloat(document.getElementById("r").value);
+      const g = parseFloat(document.getElementById("g").value);
+      const b = parseFloat(document.getElementById("b").value);
+
+      if (isNaN(r) || isNaN(g) || isNaN(b)) {
+        document.getElementById("result").textContent = "すべてのRGB値を入力してください。";
+        return;
+      }
+
+      const rF = (r / 255).toFixed(3);
+      const gF = (g / 255).toFixed(3);
+      const bF = (b / 255).toFixed(3);
+
+      document.getElementById("result").textContent =
+        `RGB(${r}, ${g}, ${b}) → 小数表記: (${rF}, ${gF}, ${bF})`;
+
+      setPreviewColor(r, g, b);
+    }
+
+    function convertHEX() {
+      const hex = document.getElementById("hex").value.trim();
+      const hexRegex = /^#?([a-fA-F0-9]{6})$/;
+      const match = hex.match(hexRegex);
+
+      if (!match) {
+        document.getElementById("result").textContent = "有効なHEXコードを入力してください（例: #FFAABB）";
+        return;
+      }
+
+      const value = match[1];
+      const r = parseInt(value.substring(0, 2), 16);
+      const g = parseInt(value.substring(2, 4), 16);
+      const b = parseInt(value.substring(4, 6), 16);
+
+      const rF = (r / 255).toFixed(3);
+      const gF = (g / 255).toFixed(3);
+      const bF = (b / 255).toFixed(3);
+
+      document.getElementById("result").textContent =
+        `HEX #${value.toUpperCase()} = RGB(${r}, ${g}, ${b}) → 小数表記: (${rF}, ${gF}, ${bF})`;
+
+      setPreviewColor(r, g, b);
+    }
+  </script>
+</body>
+</html>
