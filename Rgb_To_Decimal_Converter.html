@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <title>RGB → 小数変換ツール</title>
+  <style>
+    body { font-family: sans-serif; padding: 20px; background-color: #f9f9f9; }
+    input[type="number"] { width: 80px; margin-right: 10px; }
+    button { padding: 5px 10px; }
+    .result { margin-top: 20px; font-weight: bold; }
+  </style>
+</head>
+<body>
+  <h1>RGB → 0〜1 小数変換ツール</h1>
+  <p>0〜255のRGB値を入力して、0〜1の小数に変換します。</p>
+  <div>
+    <label>R:</label>
+    <input type="number" id="r" min="0" max="255">
+    <label>G:</label>
+    <input type="number" id="g" min="0" max="255">
+    <label>B:</label>
+    <input type="number" id="b" min="0" max="255">
+    <button onclick="convertRGB()">変換</button>
+  </div>
+  <div class="result" id="result"></div>
+
+  <script>
+    function convertRGB() {
+      const r = parseFloat(document.getElementById("r").value);
+      const g = parseFloat(document.getElementById("g").value);
+      const b = parseFloat(document.getElementById("b").value);
+
+      if (isNaN(r) || isNaN(g) || isNaN(b)) {
+        document.getElementById("result").textContent = "すべての値を入力してください。";
+        return;
+      }
+
+      const rF = (r / 255).toFixed(3);
+      const gF = (g / 255).toFixed(3);
+      const bF = (b / 255).toFixed(3);
+
+      document.getElementById("result").textContent =
+        `RGB(${r}, ${g}, ${b}) → 小数表記: (${rF}, ${gF}, ${bF})`;
+    }
+  </script>
+</body>
+</html>
