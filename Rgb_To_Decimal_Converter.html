@@ -2,17 +2,19 @@
 <html lang="ja">
 <head>
   <meta charset="UTF-8">
-  <title>RGB → 小数変換ツール</title>
+  <title>RGB / HEX → 小数変換ツール</title>
   <style>
     body { font-family: sans-serif; padding: 20px; background-color: #f9f9f9; }
-    input[type="number"] { width: 80px; margin-right: 10px; }
+    input[type="number"], input[type="text"] { width: 100px; margin-right: 10px; }
     button { padding: 5px 10px; }
-    .result { margin-top: 20px; font-weight: bold; }
+    .result { margin-top: 20px; font-weight: bold; white-space: pre-wrap; }
   </style>
 </head>
 <body>
-  <h1>RGB → 0〜1 小数変換ツール</h1>
-  <p>0〜255のRGB値を入力して、0〜1の小数に変換します。</p>
+  <h1>RGB / HEX → 0〜1 小数変換ツール</h1>
+  <p>RGB(0〜255) または HEX(#FFFFFFなど) を入力して、小数に変換します。</p>
+
+  <h2>RGBで入力</h2>
   <div>
     <label>R:</label>
     <input type="number" id="r" min="0" max="255">
@@ -20,8 +22,16 @@
     <input type="number" id="g" min="0" max="255">
     <label>B:</label>
     <input type="number" id="b" min="0" max="255">
-    <button onclick="convertRGB()">変換</button>
+    <button onclick="convertRGB()">RGB変換</button>
   </div>
+
+  <h2>HEXで入力</h2>
+  <div>
+    <label>HEX:</label>
+    <input type="text" id="hex" placeholder="#RRGGBB">
+    <button onclick="convertHEX()">HEX変換</button>
+  </div>
+
   <div class="result" id="result"></div>
 
   <script>
@@ -31,7 +41,7 @@
       const b = parseFloat(document.getElementById("b").value);
 
       if (isNaN(r) || isNaN(g) || isNaN(b)) {
-        document.getElementById("result").textContent = "すべての値を入力してください。";
+        document.getElementById("result").textContent = "すべてのRGB値を入力してください。";
         return;
       }
 
@@ -41,6 +51,29 @@
 
       document.getElementById("result").textContent =
         `RGB(${r}, ${g}, ${b}) → 小数表記: (${rF}, ${gF}, ${bF})`;
+    }
+
+    function convertHEX() {
+      const hex = document.getElementById("hex").value.trim();
+      const hexRegex = /^#?([a-fA-F0-9]{6})$/;
+      const match = hex.match(hexRegex);
+
+      if (!match) {
+        document.getElementById("result").textContent = "有効なHEXコードを入力してください（例: #FFAABB）";
+        return;
+      }
+
+      const value = match[1];
+      const r = parseInt(value.substring(0, 2), 16);
+      const g = parseInt(value.substring(2, 4), 16);
+      const b = parseInt(value.substring(4, 6), 16);
+
+      const rF = (r / 255).toFixed(3);
+      const gF = (g / 255).toFixed(3);
+      const bF = (b / 255).toFixed(3);
+
+      document.getElementById("result").textContent =
+        `HEX #${value.toUpperCase()} = RGB(${r}, ${g}, ${b}) → 小数表記: (${rF}, ${gF}, ${bF})`;
     }
   </script>
 </body>
