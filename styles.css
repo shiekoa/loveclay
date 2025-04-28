@@ -1,331 +1,150 @@
-@charset "utf-8";
-/* CSS Document */
-
-/* 全体設定 */
-body, html {
-  margin: 0;
-  padding: 0;
-  font-family: "Noto Sans JP", sans-serif;
-}
-ul {
-  padding: 0 !important;
-  margin: 0 !important;
-  list-style: none !important;
-  padding-inline-start: 0 !important;
-}
-
-/* フォント設定 */
-.noto-sans-jp {
-  font-family: "Noto Sans JP", sans-serif;
-  font-weight: 400;
-  font-style: normal;
-}
-
-.zen-antique-soft-regular {
-  font-family: "Zen Antique Soft", serif;
-  font-weight: 400;
-  font-style: normal;
-}
-
-
-/* ヘッダー */
-.header-container {
-  display: flex;
-  justify-content: center; /*まず中央揃え */
-  align-items: center;
-  background: #FBFBFB;
-  padding: 0px 40px;
-  position: fixed;
-  width: 100%;
-  height: 80px;
-  top: 0;
-  left: 0;
-  z-index: 1000;
-}
-/* 1080pxの中央ボックス */
-.header-content {
-  display: flex;
-  justify-content: flex-end; /* 中で右寄せ */
-  align-items: center;
-  width: 1080px; /* 画面中央に固定 */
-  height: 100%;
-}
-/* ナビゲーションメニュー */
-.header-container nav ul {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-  display: flex;
-  align-items: center;
-  height: 100%;
-}
-
-.header-container nav ul li {
-  margin-right: 30px;
-}
-
-.header-container nav ul li a {
-  color: #302A2E;
-  text-decoration: none;
-  font-weight: normal;
-  letter-spacing: calc(16px * 0.3); /*  */
-}
-
-.header-container nav ul li a:hover {
-  color: #F6182D;
-}
-/* メインビジュアル */
-.hero {
-  background: url('mainred.webp') center/cover no-repeat #F6182D;
-  width: 100%;
-  height: 640px; /* 高さ */
-}
-
-
-/* 黒字の説明文 */
-.description {
-  max-width: 1080px; /* 最大幅1080px */
-  margin: 0 auto; /* 中央配置 */
-  text-align: left; /* 左揃え */
-  line-height: 1.8; /* 行間を広めに */
-  padding-top: 32px; /* トップ画像との間隔 */	
-  padding-bottom: 0px; /* ボタンとの間隔も統一 */
-}
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>愛泥portfolio</title>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@100..900&family=Zen+Antique+Soft&display=swap" rel="stylesheet">
+	  <!-- リセットCSS -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/destyle.css@3.0.2/destyle.css">
+</head>
+<body>
+  <header class="header-container">
+   <div class="header-content">
+    <nav class="pc-nav">
+      <ul>
+        <li><a href="index.html">HOME</a></li>
+        <li><a href="about.html">ABOUT</a></li>
+        <li><a href="works.html">WORKS</a></li>
+        <li><a href="https://form1ssl.fc2.com/form/?id=6129dbc1e9161376" target="_blank">CONTACT</a></li>
+      </ul>
+    </nav>
+   </div>
+	  
+	  <!-- ここがハンバーガー！ -->
+ <div class="hamburger">
+  <button id="menu-btn">≡</button>
+  <nav id="sp-nav">
+    <ul>
+      <li><a href="index.html">HOME</a></li>
+      <li><a href="about.html">ABOUT</a></li>
+      <li><a href="works.html">WORKS</a></li>
+      <li><a href="https://form1ssl.fc2.com/form/?id=6129dbc1e9161376" target="_blank">CONTACT</a></li>
+    </ul>
+  </nav>
+ </div>
+</header>
 
 
 
-/* 1080px幅のコンテンツ用コンテナ */
-.content-container {
-  max-width: 1080px; /* 幅を1080pxに制限 */
-  margin: 0 auto; /* 中央配置 */
-  padding: 0 0px; /* スマホ対応の余白 */
-}
-/* 全ボタン共通のスタイル */
-.link-button {
-  display: flex;  /* フレックスボックス */
-  flex-direction: row;  /* 横並び */
-  justify-content: center;  /* 中央揃え */
-  align-items: center;  /* 縦中央揃え */
-  padding: 11px 32px;  /* 余白 */
-  gap: 16px;  /* アイコンと文字の間隔 */
-  background: #FBFBFB;  /* 背景色 */
-  border: 1px solid #F6182D;  /* 枠線の色 */
-  border-radius: 1000px;  /* 丸み */
-  color: #F6182D;  /* 文字色 */
-  font-size: 20px;  /* フォントサイズ */
-  text-decoration: none;  /* 下線なし */
-  transition: all 0.3s ease; /* なめらかアニメーション */
-  flex-grow: 0;  /* 大きさは固定 */
-}
 
-/* ホバー時のスタイル */
-.link-button:hover {
-  background: #F6182D;
-  color: #FBFBFB;
-}
+	
+  <main>
+    <div class="hero">
+      <img src="愛泥画像.png" alt="愛泥" class="hero-image">
+    </div>
 
-/* 全体のコンテナ */
-.links-container {
-  display: flex;
-  justify-content: center; /* 1080pxの中央配置 */
-  margin-top: 32px;
-  padding: 0 0px; /* 左右に余白入れる！ */
-  margin-bottom: 32px; /* ボタンとフッターの間隔 */
-}
+	  
+  <div class="content-container">
+    <p class="description">
+      「愛泥」は、イラスト、デザイン、動画編集、Live2Dモデル制作、漫画（成人向け対応可）、ゲーム制作など、幅広いクリエイティブ分野で活動するクリエイターです。さまざまなスキルを組み合わせ、クライアントの要望に沿った作品を丁寧に制作しています。柔軟な発想と丁寧な対応を心がけ、個性を引き出すお手伝いをいたします。
+    </p>
+  </div>
 
-/* 1080pxのボックス */
-.links {
-  display: flex;
-  flex-wrap: wrap; /* 画面幅に合わせて改行 */
-  justify-content: flex-start; /* 左詰め */
-  gap: 8px; /* ボタン同士の余白 */
-  max-width: 1080px; /* 最大幅1080px */
-  width: 100%;
-  margin: 0 auto;                 /* 中央寄せ！ */
-  padding: 0 0px;                /* 左右に余白（説明文と揃える） */
-  box-sizing: border-box;
+<section class="links-container" id="nav-links">
+  <div class="links">
+    <a href="https://x.com/kill_it_love" target="_blank" class="link-button">
+    <img src="icon-x.svg" alt="" class="icon-small">
+    <div class="separator"></div>
+    <span>X (全年齢)</span></a>
+	  
+    <a href="#" class="link-button">
+    <img src="icon-x.svg" alt="" class="icon-small">
+    <div class="separator"></div>
+    <span>X (成人向け)</span></a>  
+	  
+    <a href="https://www.youtube.com/channel/UCTQwM7aY4UtpQbaiPhFMc8g" target="_blank" class="link-button">
+    <img src="icon-youtube.png" alt="" class="icon">
+    <div class="separator"></div>
+    <span>YouTube</span></a>
+	  
+    <a href="https://form1ssl.fc2.com/form/?id=6129dbc1e9161376" target="_blank" class="link-button">
+    <img src="icon-mail.png" alt="" class="icon">
+    <div class="separator"></div>
+    <span>お仕事ご依頼フォーム</span></a>
+	  
+    <a href="https://skeb.jp/@aidei" target="_blank" class="link-button">
+    <img src="icon-art.png" alt="" class="icon-large">
+    <div class="separator"></div>
+    <span>Skeb (イラスト作成依頼)</span></a>
+	  
+    <a href="https://vgen.co/akuno4" target="_blank" class="link-button">
+    <img src="icon-art.png" alt="" class="icon-large">
+    <div class="separator"></div>
+    <span>VGen (イラスト・アバター作成依頼)</span></a>
+	  
+    <a href="https://shibito4.booth.pm/" target="_blank" class="link-button">
+    <img src="icon-shop.png" alt="" class="icon-large">
+    <div class="separator"></div>
+    <span>BOOTH (グッズ販売)</span></a> 
+	  
+    <a href="https://xfolio.jp/portfolio/agnostic" target="_blank" class="link-button">
+    <img src="icon-pic.png" alt="" class="icon-large">
+    <div class="separator"></div>
+    <span>Xfolio</span></a> 
+	  
+    <a href="https://nizima.com/Profile/326904" target="_blank" class="link-button">
+    <img src="icon-shop.png" alt="" class="icon-large">
+    <div class="separator"></div>
+    <span>nizima (アバター販売)</span></a> 
+	  
+    <a href="https://www.dlsite.com/girls/circle/profile/=/maker_id/RG01022199.html" target="_blank" class="link-button">
+    <img src="icon-book.png" alt="" class="icon-small">
+    <div class="separator"></div>
+    <span>DLsite (R18)</span></a>    
+	  
+    <a href="https://www.dmm.co.jp/dc/doujin/-/list/=/article=maker/id=222397/" target="_blank" class="link-button">
+    <img src="icon-book.png" alt="" class="icon-small">
+    <div class="separator"></div>
+    <span>FANZA (R18)</span></a>    
+	  
+    <a href="https://novelgame.jp/users/profile/62661" target="_blank" class="link-button">
+    <img src="icon-game.png" alt="" class="icon-large">
+    <div class="separator"></div>
+    <span>ノベルゲームコレクション</span></a> 
+	  
+    <a href="https://plicy.net/User/120930" target="_blank" class="link-button">
+    <img src="icon-game.png" alt="" class="icon-large">
+    <div class="separator"></div>
+    <span>PLiCy</span></a> 
+	  
+	<a href="https://shiekoa.github.io/loveclay/rgb-converter.html" target="_blank" class="link-button">
+    <img src="icon-art.png" alt="" class="icon-large">
+    <div class="separator"></div>
+    <span>小数変換ツール</span></a> 
+  </div>
+</section>
 
-}
+  </main>
 
-
-/* アイコンのスタイル */
-.icon {
-  width: 20px; /* アイコンのサイズを統一 */
-  height: auto;
-  image-rendering: -webkit-optimize-contrast; /* 画質を改善 */
-}
-.icon-small {
-  width: 18px; /* このアイコンだけ18pxにする */
-}
-.icon-large {
-  width: 25px; /* このアイコンだけ18pxにする */
-}
-/* 縦棒（セパレーター）のスタイル */
-.separator {
-  width: 1px; /* 太さ */
-  height: 16px; /* 縦の長さ */
-  background-color: #F6182D; /* 色 */
-  margin: 0 8px; /* アイコンや文字との間隔 */
-  flex-shrink: 0; /* これで縦棒が縮まないようにする */
-  box-sizing: content-box;
-}
-/* ホバー時のエフェクト */
-.link-button:hover {
-  background: #F6182D;
-  color: #FBFBFB;
-}
-
-.link-button:hover .icon,
-.link-button:hover .icon-small,
-.link-button:hover .icon-large {
-  filter: invert(1); /* アイコンを反転 */
-}
-
-/* フッターとボタンの間にpxのスペース */
-.links-container {
-  margin-bottom: 32px; /* ボタンとフッターの間隔をpxに */
-}
-/* フッター */
-footer {
-  background-color: #F6182D;
-  color: #FBFBFB;
-  text-align: center;
-  padding: 20px 0;
-  width: 100%;
-}
-/* フッター内のテキストを左寄せにする */
-.footer-content {
-  max-width: 1080px; /* 1080px幅に制限 */
-  margin: 0 auto; /* 中央配置 */
-  text-align: left; /* 左寄せ */
-  padding: 0 0px; /* 左右の余白（スマホ対策） */
-}
-
-/* 全体の背景色を #FBFBFB に */
-body {
-  background-color: #FBFBFB;
-}
-
-/* PC用 → 普通に見せる */
-#nav-links {
-  display: block;
-}
+  <footer>
+   <div class="footer-content">
+    <p>©2025 愛泥. All rights reserved.</p>
+   </div>
+  </footer>
 
 
-/* スマホ（768px以下）は消す！ */
-@media screen and (max-width: 768px) 
+<script>
+  const btn = document.getElementById('menu-btn');
+  const nav = document.getElementById('sp-nav');
 
-{
- /* ハンバーガーメニュー */
-  .hamburger {
-    position: fixed;
-    top: 30px;
-    right: 20px;                  /* 右から20px */
-    z-index: 2000;
-	  display: block; 
-  }
-	.links {
-    flex-direction: column; /* ← ここ！縦並び */
-    align-items: flex-start;      /* 左揃え！ */
-    padding-left: 20px;           /* （オマケ）余白ちょっと入れるときれい */ 
-	overflow-x: auto;  /* ← 横スクロール */
-  }
-	.link-button {
-    white-space: nowrap;
-    min-width: 180px; /* スマホに合わせてちょっと小さめでもOK */
-  }
-	.content-container {
-    padding: 0 20px;
-    box-sizing: border-box;
-  }
-   .pc-nav {
-    display: none; /*  */
-  }
-   .footer-content {
-    padding-left: 20px; /* ← ここで余白を入れる！ */
-    padding-right: 20px; /* （お好みで）両サイド余白 */
-    box-sizing: border-box; /* 念のため入れておくと安心 */
-  }
-	.content-container {
-    padding-right: 20px; /* 右だけ余白 */
-    padding-left: 20px;  /* 左にも欲しかったらこっちも */
-    box-sizing: border-box;
-  }
-  #sp-nav {
-    display: none; /* 最初は非表示 */
-    background-color: #FBFBFB;
-    position: fixed;
-    top: 80px;
-    right: 0px;
-    width:200px;
-  	max-height: calc(100vh - 80px); /* 画面いっぱいからヘッダー分引く */
-    overflow-y: auto;             /* はみ出すとスクロールできる！ */
-    z-index: 1000;
-    box-sizing: border-box;
-    justify-content: center;
-    align-items: center;
-	padding: 0;
-    text-align: center;
-  }
+  btn.addEventListener('click', () => {
+    nav.classList.toggle('open');
+  });
+</script>
 
-  #sp-nav.open {
-    display: flex; /* ボタン押したら表示！ */
-	justify-content: center;
-    align-items: center;
-  }
-		 
- #sp-nav ul {
-    list-style: none;
-    padding: 0 !important;
-    margin: 0 !important;
-    padding-inline-start: 0 !important;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    box-sizing: border-box;
-    height: 100%;
-    width: 100%;
-	text-align: center; 
-}
-
-  #sp-nav ul li {
-	margin: 0 0 15px 0;
-    margin-bottom: 15px;
-	width: auto;
-    text-align: center;  /* ！ */
-	padding-top: 10px;     /* ！ */
-    padding-bottom: 0px;
-  }
-
-  #sp-nav ul li a {
-	display: inline-block;
-    width: auto;
-    text-align: center;
-    color: #302A2E;
-    text-decoration: none;
-    font-size: 18px;
-	margin: 0;               /* 縦の間隔だけで横は余白なし */
-
-  }
-
-  #sp-nav ul li a:hover {
-    color: #F6182D;
-  }
-
-}
-
-
-
-/* ハンバーガーメニュー初期状態は隠す */
-.hamburger { display: none; }
-@media screen and (max-width: 768px) {
-  .hamburger { display: block; }
-  .pc-nav { display: none; }
-}
-
-/* 「open」クラスがついたら表示 */
-#sp-nav.open {
-  display: flex;
-}
-
+</body>
+</html>
