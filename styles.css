@@ -7,6 +7,12 @@ body, html {
   padding: 0;
   font-family: "Noto Sans JP", sans-serif;
 }
+ul {
+  padding: 0 !important;
+  margin: 0 !important;
+  list-style: none !important;
+  padding-inline-start: 0 !important;
+}
 
 /* フォント設定 */
 .noto-sans-jp {
@@ -82,16 +88,11 @@ body, html {
   margin: 0 auto; /* 中央配置 */
   text-align: left; /* 左揃え */
   line-height: 1.8; /* 行間を広めに */
-  padding-top: 32px; /* トップ画像との間隔 */	padding-bottom: 0px; /* ボタンとの間隔も統一 */
+  padding-top: 32px; /* トップ画像との間隔 */	
+  padding-bottom: 0px; /* ボタンとの間隔も統一 */
 }
 
-/*  */
-.links-container {
-  display: flex;
-  justify-content: center;
-  margin-top: 32px; /* 黒字との間隔を統一 */
-  margin-bottom: 32px; /* フッターとの間隔を統一 */
-}
+
 
 /* 1080px幅のコンテンツ用コンテナ */
 .content-container {
@@ -128,6 +129,8 @@ body, html {
   display: flex;
   justify-content: center; /* 1080pxの中央配置 */
   margin-top: 32px;
+  padding: 0 0px; /* 左右に余白入れる！ */
+  margin-bottom: 32px; /* ボタンとフッターの間隔 */
 }
 
 /* 1080pxのボックス */
@@ -138,6 +141,10 @@ body, html {
   gap: 8px; /* ボタン同士の余白 */
   max-width: 1080px; /* 最大幅1080px */
   width: 100%;
+  margin: 0 auto;                 /* 中央寄せ！ */
+  padding: 0 0px;                /* 左右に余白（説明文と揃える） */
+  box-sizing: border-box;
+
 }
 
 
@@ -198,3 +205,126 @@ footer {
 body {
   background-color: #FBFBFB;
 }
+
+/* PC用 → 普通に見せる */
+#nav-links {
+  display: block;
+}
+
+
+/* スマホ（768px以下）は消す！ */
+@media screen and (max-width: 768px) 
+
+{
+ /* ハンバーガーメニュー */
+  .hamburger {
+    position: fixed;
+    top: 30px;
+    right: 20px;                  /* 右から20px */
+    z-index: 1001;
+  }
+	.links {
+    flex-direction: column; /* ← ここ！縦並び */
+    align-items: flex-start;      /* 左揃え！ */
+    padding-left: 20px;           /* （オマケ）余白ちょっと入れるときれい */
+  }
+	.link-button {
+    white-space: nowrap;
+    min-width: 180px; /* スマホに合わせてちょっと小さめでもOK */
+  }
+	.content-container {
+    padding: 0 20px;
+    box-sizing: border-box;
+  }
+   .pc-nav {
+    display: none; /*  */
+  }
+   .footer-content {
+    padding-left: 20px; /* ← ここで余白を入れる！ */
+    padding-right: 20px; /* （お好みで）両サイド余白 */
+    box-sizing: border-box; /* 念のため入れておくと安心 */
+  }
+	.content-container {
+    padding-right: 20px; /* 右だけ余白 */
+    padding-left: 20px;  /* 左にも欲しかったらこっちも */
+    box-sizing: border-box;
+  }
+  #sp-nav {
+    display: none; /* 最初は非表示 */
+    background-color: #FBFBFB;
+    position: fixed;
+    top: 80px;
+    right: 0px;
+    width:200px;
+  	max-height: calc(100vh - 80px); /* 画面いっぱいからヘッダー分引く */
+    overflow-y: auto;             /* はみ出すとスクロールできる！ */
+    z-index: 1000;
+    box-sizing: border-box;
+	display: flex;
+    justify-content: center;
+    align-items: center;
+	padding: 0;
+    text-align: center;
+  }
+
+  #sp-nav.open {
+    display: flex; /* ボタン押したら表示！ */
+	justify-content: center;
+    align-items: center;
+  }
+		 
+ #sp-nav ul {
+    list-style: none;
+    padding: 0 !important;
+    margin: 0 !important;
+    padding-inline-start: 0 !important;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    box-sizing: border-box;
+    height: 100%;
+    width: 100%;
+	text-align: center; 
+}
+
+  #sp-nav ul li {
+	margin: 0 0 15px 0;
+    margin-bottom: 15px;
+	width: auto;
+    text-align: center;  /* ！ */
+	padding-top: 10px;     /* ！ */
+    padding-bottom: 0px;
+  }
+
+  #sp-nav ul li a {
+	display: inline-block;
+    width: auto;
+    text-align: center;
+    color: #302A2E;
+    text-decoration: none;
+    font-size: 18px;
+	margin: 0;               /* 縦の間隔だけで横は余白なし */
+
+  }
+
+  #sp-nav ul li a:hover {
+    color: #F6182D;
+  }
+
+}
+
+
+
+/* ハンバーガーメニュー初期状態は隠す */
+.hamburger { display: none; }
+@media screen and (max-width: 768px) {
+  .hamburger { display: block; }
+  .pc-nav { display: none; }
+}
+
+/* 「open」クラスがついたら表示 */
+#sp-nav.open {
+  display: block;
+}
+
