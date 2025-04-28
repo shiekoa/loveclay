@@ -226,7 +226,8 @@ body {
 	.links {
     flex-direction: column; /* ← ここ！縦並び */
     align-items: flex-start;      /* 左揃え！ */
-    padding-left: 20px;           /* （オマケ）余白ちょっと入れるときれい */
+    padding-left: 20px;           /* （オマケ）余白ちょっと入れるときれい */ 
+	overflow-x: hidden;  /* ← 横スクロール防止 */
   }
 	.link-button {
     white-space: nowrap;
