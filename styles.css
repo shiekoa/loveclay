@@ -260,7 +260,6 @@ body {
     overflow-y: auto;             /* はみ出すとスクロールできる！ */
     z-index: 1000;
     box-sizing: border-box;
-	display: flex;
     justify-content: center;
     align-items: center;
 	padding: 0;
@@ -325,6 +324,6 @@ body {
 
 /* 「open」クラスがついたら表示 */
 #sp-nav.open {
-  display: block;
+  display: flex;
 }
 
